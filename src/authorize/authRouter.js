@@ -12,9 +12,9 @@ authRouter
 })
     .post('/login', (req, res, next)=>{
 
-        const {user_name, password} = req.body;
+        const {mobile_number, password} = req.body;
 
-        const user = { user_name, password};
+        const user = { mobile_number, password};
 
         for( const [key, value] of Object.entries(user)){
             if(value == null){
@@ -22,7 +22,7 @@ authRouter
             }
         }
 
-        AuthService.getUserWithUserName(req.app.get('db'), user.user_name)
+        AuthService.getUserWithUserName(req.app.get('db'), user.mobile_number)
             .then(dbUser => {
                 if(!dbUser){
                     return res.status(400).json({ error: 'Incorrect user_name or password'});
@@ -35,7 +35,7 @@ authRouter
                             return res.status(400).json({ error: 'Incorrect user_name or password'});
                         };
 
-                        const sub = dbUser.user_name;
+                        const sub = dbUser.mobile_number;
                         const payload = { user: dbUser.id};
                         
                         res.send({
