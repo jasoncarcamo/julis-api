@@ -14,5 +14,6 @@ CREATE TABLE clean_users (
     best_time_reached VARCHAR(65535) NOT NULL, 
     date_created TIMESTAMP DEFAULT now() NOT NULL,
     date_modified TIMESTAMP DEFAULT now() NOT NULL,
+    message TEXT,
     verified BOOLEAN DEFAULT FALSE NOT NULL
 );

@@ -27,6 +27,7 @@ userRouter
         city: resData.city,
         state_region: resData.state_region,
         zipcode: resData.zipcode,
+        message: resData.message,
         verified: resData.verified
         }));
     })
