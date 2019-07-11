@@ -31,7 +31,7 @@ const RegService = {
       serializaUser(user){
           return {
               id: user.id,
-              user_name: xss(user.user_name),
+              authToken: user.authToken,
               first_name: xss(user.user_name),
               last_name: xss(user.last_name),
               date_created: new Date(user.date_created)

@@ -36,7 +36,6 @@ regRouter
 
                         return RegService.insertUser( req.app.get('db'), newUser)
                             .then( user => {
-
                                 return res.status(201).json(RegService.serializaUser(user));
                             });
                     })

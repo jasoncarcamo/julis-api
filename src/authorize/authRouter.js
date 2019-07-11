@@ -40,7 +40,7 @@ authRouter
                         
                         res.send({
                             authToken: AuthService.createJwt(sub, payload),
-                            dbUser: dbUser.id
+                            id: dbUser.id
                         });
                     })
             })
