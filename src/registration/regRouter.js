@@ -1,9 +1,20 @@
 const express = require('express');
 const regRouter = express.Router();
 const RegService = require('./RegService');
+const AuthService = require('../authorize/AuthService');
+let nodemailer = require('nodemailer');
+
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'jasoncarcamo30@gmail.com',
+        pass: 'Carcamo11'
+    }
+});
 
 regRouter.use(express.json());
-regRouter.use(express.urlencoded({ error: true}));
+regRouter.use(express.urlencoded({ extended: true}));
 
 
 regRouter
@@ -36,6 +47,7 @@ regRouter
 
                         return RegService.insertUser( req.app.get('db'), newUser)
                             .then( user => {
+                                
                                 return res.status(201).json(RegService.serializaUser(user));
                             });
                     })

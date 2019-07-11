@@ -22,8 +22,8 @@ const AuthService = {
             algorithms: ['HS256'],
         });
     },
-    parseBasicToken(toekn){
-        return Buffer.from(toekn, 'base64').toString().split(':')
+    parseBasicToken(token){
+        return Buffer.from(token, 'base64').toString().split(':')
     }
 
 }
