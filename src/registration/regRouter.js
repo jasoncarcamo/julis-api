@@ -2,16 +2,7 @@ const express = require('express');
 const regRouter = express.Router();
 const RegService = require('./RegService');
 const AuthService = require('../authorize/AuthService');
-let nodemailer = require('nodemailer');
-
-
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'jasoncarcamo30@gmail.com',
-        pass: 'Carcamo11'
-    }
-});
+const transporter = require('../nodemailer/nodemailer')
 
 regRouter.use(express.json());
 regRouter.use(express.urlencoded({ extended: true}));
@@ -47,6 +38,27 @@ regRouter
 
                         return RegService.insertUser( req.app.get('db'), newUser)
                             .then( user => {
+
+                                const sub = newUser.mobile_number;
+                                const payload = { user: newUser.id};
+                                
+                                const token = AuthService.createJwt(sub, payload);
+                                
+
+                                let mailOptions = {
+                                    from : 'jasoncarcamo30@yahoo.com',
+                                    to: newUser.email,
+                                    subject: 'Verify your email',
+                                    html: `<main<a href="http://localhost:3000/api/verify?token=${token}&id=${newUser.id}">http://localhost:3000/api/verify?token=${token}&id=${newUser.id}</a></main>`
+                                }
+
+                                transporter.sendMail(mailOptions, (error, info)=>{
+                                    if(error){
+                                        console.log(error)
+                                    } else {
+                                        console.log('Email sent', info.response)
+                                    }
+                                })
                                 
                                 return res.status(201).json(RegService.serializaUser(user));
                             });
