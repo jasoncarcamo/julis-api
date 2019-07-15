@@ -5,10 +5,10 @@ const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*
 
 const RegService = {
     getUser(db, {mobile_number}){
-      return db.select('*').from('clean_users').where({mobile_number}).first();
+      return db.select('*').from('users').where({mobile_number}).first();
   },
     insertUser(db, newUser){
-        return db.insert(newUser).into('clean_users').returning('*').then(([user])=> user);
+        return db.insert(newUser).into('users').returning('*').then(([user])=> user);
     },
     validatePassword(password) {
         if (password.length < 8) {
@@ -38,7 +38,7 @@ const RegService = {
           }
       },
       deleteuser(db, id){
-          return db.delete().from('clean_users').where({id});
+          return db.delete().from('users').where({id});
       }
 
 }

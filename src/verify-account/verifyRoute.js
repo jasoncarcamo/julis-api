@@ -30,9 +30,12 @@ verifyRouter
         if(req.user){
             VerifyService.isVerified(req.app.get('db'), req.user.id)
                 .then(resdata => {
-                    console.log(resdata)
-                    VerifyService.verifyId(req.app.get('db'), req.user.id)
-                        .then(  data => res.status(200).json({verified: true}))
+                    if(resdata.verified !== true){
+                        VerifyService.verifyId(req.app.get('db'), req.user.id)
+                            .then(  data => res.status(200).json({verified: true}))
+                    } else{
+                        return res.status(400).json({ error: 'Account is already verified'})
+                    }
                 })
         } else{
             return res.status(400).json({ error: 'Bad request'})

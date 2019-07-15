@@ -24,15 +24,16 @@ authRouter
 
         AuthService.getUserWithUserName(req.app.get('db'), user.mobile_number)
             .then(dbUser => {
+                
                 if(!dbUser){
-                    return res.status(400).json({ error: 'Incorrect user_name or password'});
+                    return res.status(400).json({ error: 'No account found, You can sign up here'});
                 };
 
                 AuthService.comparePassword(user.password, dbUser.password)
                     .then(compareMatch => {
 
                         if(!compareMatch){
-                            return res.status(400).json({ error: 'Incorrect user_name or password'});
+                            return res.status(400).json({ error: 'Incorrect password'});
                         };
 
                         const sub = dbUser.mobile_number;

@@ -2,7 +2,7 @@
 
 const UserService = {
     getUserInfo(db, id){
-        return db.select('*').from('clean_users').where({id}).first();
+        return db.select('*').from('users').where({id}).first();
     }
 }
 

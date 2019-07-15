@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS clean_users;
+DROP TABLE IF EXISTS users;

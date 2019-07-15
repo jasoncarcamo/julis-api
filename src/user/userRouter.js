@@ -1,37 +1,39 @@
 const express = require('express');
 const userRouter = express.Router();
 const UserService = require('./UserService');
+const requestServiceRouter = require('./requestServiceRoute/requestServiceRouter');
 
 
-
-userRouter.use(express.json());
-userRouter.use(express.urlencoded({ extended: true}));
-
-
+userRouter.use('/:userId', requestServiceRouter);
 
 userRouter
-    .get('/:userId', (req, res, next)=>{
+    .route('/:userId')
+    .all(express.json())
+    .all(express.urlencoded({ extended: true}))
+    .get((req, res, next)=>{
         const {userId} = req.params;
 
         UserService.getUserInfo(req.app.get('db'), userId).then( resData => {
-            res.send({
-                first_name: resData.first_name, 
-                last_name: resData.last_name, 
-                best_days_reach: resData.best_days_reached,
-                best_time_reach: resData.best_time_reached,
-                email: resData.email, 
-                home_number: resData.home_number,
-                mobile_number: resData.mobile_number,
-                date_created: resData.date_created,
-                date_modified: resData.date_modified,
-                address: resData.address,
-                city: resData.city,
-                state_region: resData.state_region,
-                zipcode: resData.zipcode,
-                message: resData.message,
-                verified: resData.verified,
-        })});
-    })
+            if(resData){
+                res.json({
+                    first_name: resData.first_name, 
+                    last_name: resData.last_name,
+                    email: resData.email, 
+                    home_number: resData.home_number,
+                    mobile_number: resData.mobile_number,
+                    date_created: resData.date_created,
+                    date_modified: resData.date_modified,
+                    address: resData.address,
+                    city: resData.city,
+                    state_region: resData.state_region,
+                    zipcode: resData.zipcode,
+                    verified: resData.verified,
+                })  
+            } else{
+                return res.status(400).json({ error: 'Account does not exist'})
+            }}
+        );
+    });
 
 
 

@@ -10,9 +10,9 @@ regRouter.use(express.urlencoded({ extended: true}));
 
 regRouter
     .post('/register', (req, res, next) => {
-        const {first_name, last_name, email, password, home_number,  mobile_number, address, city, state_region, zipcode, best_days_reached, best_time_reached, message, id} = req.body;
+        const {first_name, last_name, email, password, home_number,  mobile_number, address, city, state_region, zipcode, id} = req.body;
 
-        const newUser = {first_name, last_name, email, password, home_number,  mobile_number, address, city, state_region, zipcode, best_days_reached, best_time_reached, message, id};
+        const newUser = {first_name, last_name, email, password, home_number,  mobile_number, address, city, state_region, zipcode, id};
 
         for(const [key, value] of Object.entries(newUser)){
             if(value == null){
