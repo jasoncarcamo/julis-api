@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const authRouter = require('../authorize/authRouter');
 const regRouter = require('../registration/regRouter');
 const userRouter = require('../user/userRouter');
-const verifyRouter = require('../verify-account/verifyRoute');
+const verifyRouter = require('../verify-account/verifyRouter');
 
 
 app.use(morgan('common'));
@@ -20,6 +20,6 @@ app.use('/user', userRouter);
 
 app.get('/', (req, res, next)=> {
     res.send('Success!')
-})
+});
 
 module.exports = app;

@@ -5,11 +5,7 @@ const AuthService = require('./AuthService');
 authRouter.use(express.json());
 authRouter.use(express.urlencoded({ extended: true}));
 
-authRouter
-    .get('/:id', (req, res, next)=>{
-    const {id} = req.params;
-    AuthService.getUserWithUserName(req.app.get('db'), id).then( data => res.json(data));
-    })
+authRouter    
     .post('/login', (req, res, next)=>{
 
         const {mobile_number, password} = req.body;
