@@ -59,7 +59,6 @@ regRouter
                                         console.log('Email sent', info.response)
                                     }
                                 })
-                                
                                 return res.status(201).json(RegService.serializaUser(user));
                             });
                     })

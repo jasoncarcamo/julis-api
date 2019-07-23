@@ -28,13 +28,13 @@ requestServiceRouter
         
         RequestService.newService(req.app.get('db'), newService);
 
-        res.json(req.body);
+        res.status(201).json(req.body);
     })
     .patch((req, res, next)=>{
 
-        const {service_type, comments, day, price, id,date_modified} = req.body;
+        const {service_type, comments, day, price, id,date_modified, best_time_reached} = req.body;
         
-        const newService = {service_type, comments, day, price, id, date_modified};
+        const newService = {service_type, comments, day, price, id, date_modified, best_time_reached};
 
         RequestService.updateService(req.app.get('db'), newService)
             .then(data => res.status(200).json({success: 'Service has been updated'}))

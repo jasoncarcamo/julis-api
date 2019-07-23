@@ -7,7 +7,7 @@ const authRouter = require('../authorize/authRouter');
 const regRouter = require('../registration/regRouter');
 const userRouter = require('../user/userRouter');
 const verifyRouter = require('../verify-account/verifyRouter');
-
+const {NODE_ENV} = require('../../config'); 
 
 app.use(morgan('common'));
 app.use(cors());
@@ -17,9 +17,18 @@ app.use('/api', regRouter);
 app.use('/api', verifyRouter);
 app.use('/user', userRouter);
 
+app.use(function errorHandler(error, req, res, next) {
+    let response
+    if (NODE_ENV === 'production') {
+      response = { error: 'Server error' }
+    } else {
+      
+      response = { error: error.message, object: error }
+    }
+    console.error(error)
+    res.status(500).json(response)
+  })
 
-app.get('/', (req, res, next)=> {
-    res.send('Success!')
-});
+
 
 module.exports = app;
