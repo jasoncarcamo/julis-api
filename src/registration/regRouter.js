@@ -46,7 +46,7 @@ regRouter
                                 
 
                                 let mailOptions = {
-                                    from : 'jasoncarcamo30@yahoo.com',
+                                    from : 'jasoncarcamo30@gmail.com',
                                     to: newUser.email,
                                     subject: 'Verify your email',
                                     html: `<main<a href="http://localhost:3000/api/verify?token=${token}&id=${newUser.id}">http://localhost:3000/api/verify?token=${token}&id=${newUser.id}</a></main>`
