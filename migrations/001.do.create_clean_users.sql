@@ -13,5 +13,5 @@ CREATE TABLE users (
     date_created TIMESTAMP DEFAULT now() NOT NULL,
     date_modified TIMESTAMP DEFAULT now() NOT NULL,
     message TEXT,
-    verified BOOLEAN DEFAULT FALSE NOT NULL
+    verified BOOLEAN DEFAULT TRUE NOT NULL
 );
