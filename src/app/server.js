@@ -12,5 +12,5 @@ app.set('db', db)
 
 
 app.listen(PORT, ()=>{
-    console.log('Servicer running.')
+    console.log('Service running.')
 })
