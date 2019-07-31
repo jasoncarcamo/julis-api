@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node /src/app/server.js",
+    "start": "node ./src/app/server.js",
     "test": "mocha --require test/setup.js",
     "migrate": "postgrator --config ./postgrator-config.js",
-    "dev": "nodemon /src/app/server.js"
+    "dev": "nodemon ./src/app/server.js"
   },
   "keywords": [],
   "engines": {
