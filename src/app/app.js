@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -8,8 +9,9 @@ const regRouter = require('../registration/regRouter');
 const userRouter = require('../user/userRouter');
 const verifyRouter = require('../verify-account/verifyRouter');
 const {NODE_ENV} = require('../../config'); 
+const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common';
 
-app.use(morgan('common'));
+app.use(morgan(morganSetting));
 app.use(cors());
 app.use(helmet());
 app.use('/api', authRouter);

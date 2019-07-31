@@ -11,5 +11,5 @@ app.set('db', db)
 
 
 app.listen(process.env.PORT, ()=>{
-    console.log('Server running on http://localhost:8000')
+    console.log('Servicer running.')
 })

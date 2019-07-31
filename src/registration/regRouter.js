@@ -53,11 +53,6 @@ regRouter
                                 }
 
                                 transporter.sendMail(mailOptions, (error, info)=>{
-                                    if(error){
-                                        console.log(error)
-                                    } else {
-                                        console.log('Email sent', info.response)
-                                    }
                                 })
                                 return res.status(201).json(RegService.serializaUser(user));
                             });

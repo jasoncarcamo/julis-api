@@ -19,11 +19,7 @@ verifyRouter
         }
         
         transporter.sendMail(mailOptions, (error, info)=>{
-            if(error){
-                console.log(error);
-            } else{
-                console.log(info.response);
-            }
+           
         })
     })
     .put((req, res, next)=>{
