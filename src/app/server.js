@@ -1,6 +1,7 @@
 require('dotenv').config();
 const app = require('./app');
 const knex = require('knex');
+const {PORT} = require('../../config')
 
 const db = knex({
     client: 'pg',
@@ -10,6 +11,6 @@ const db = knex({
 app.set('db', db)
 
 
-app.listen(process.env.PORT, ()=>{
+app.listen(PORT, ()=>{
     console.log('Servicer running.')
 })
