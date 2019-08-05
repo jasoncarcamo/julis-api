@@ -22,7 +22,7 @@ authRouter
             .then(dbUser => {
                 
                 if(!dbUser){
-                    return res.status(400).json({ error: 'No account found, You can sign up here'});
+                    return res.status(400).json({ error: 'No account found, You can sign up <a href="/register">here</>'});
                 };
 
                 AuthService.comparePassword(user.password, dbUser.password)

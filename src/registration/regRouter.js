@@ -2,7 +2,6 @@ const express = require('express');
 const regRouter = express.Router();
 const RegService = require('./RegService');
 const AuthService = require('../authorize/AuthService');
-const transporter = require('../nodemailer/nodemailer')
 
 regRouter.use(express.json());
 regRouter.use(express.urlencoded({ extended: true}));
@@ -44,16 +43,6 @@ regRouter
                                 
                                 const token = AuthService.createJwt(sub, payload);
                                 
-
-                                let mailOptions = {
-                                    from : 'jasoncarcamo30@gmail.com',
-                                    to: newUser.email,
-                                    subject: 'Verify your email',
-                                    html: `<main<a href="http://localhost:3000/api/verify?token=${token}&id=${newUser.id}">http://localhost:3000/api/verify?token=${token}&id=${newUser.id}</a></main>`
-                                }
-
-                                transporter.sendMail(mailOptions, (error, info)=>{
-                                })
                                 return res.status(201).json(RegService.serializaUser(user));
                             });
                     })
