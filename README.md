@@ -26,14 +26,14 @@ The starting template used to create a full stack website for a cleaning company
 - POST /api/register   Create a new user
 - DELETE /api/delete/:id   Deletes a specific user by id
 
-## /api/login
+## /api/login - Logs in a user and returns a authorization token
 
 - POST /api/login  Create and returns a new authorizaion token for user successful log in
 
-## /user/service
+## /user/service - Service endpoints
 You will need a authorization token for the next few endpoints. You should have recieved a authorization token when you loggined in and automatically saved in your local storage.
 
-- GET /user/service   Returns specified user service
+- GET /user/service   Returns specific user service
 - POST /user/service   Create a new service request
 - PATCH /user/service   Update a specific service
 - DELETE /user/service   Delete a specific service
