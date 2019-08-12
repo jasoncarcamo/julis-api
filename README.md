@@ -18,6 +18,9 @@ Launches the test runner in the interactive watch mode.<br>
 
 # API url: `https://fathomless-eyrie-65525.herokuapp.com/`
 
+## Summary
+The starting template used to create a full stack website for a cleaning company. Features include endpoints for creating user accounts and complete control of creating, editing, and deleting services.
+
 ## /api/register - Registers an account
 
 - POST /api/register   Create a new user
@@ -34,3 +37,12 @@ You will need a authorization token for the next few endpoints. You should have 
 - POST /user/service   Create a new service request
 - PATCH /user/service   Update a specific service
 - DELETE /user/service   Delete a specific service
+
+## Built with
+- PostgreSQL
+- Knex
+- Helmet
+- nodemon
+- Cors
+- RESTful principles
+- TDD with mocha, Jest, and Enzyme
