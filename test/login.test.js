@@ -1,10 +1,11 @@
-require('dotenv').config()
+
+require('dotenv').config();
 const knex = require('knex');
 const app = require('../src/app/app');
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const helpers = require('./test-helpers');
 
-describe('New service endpoint', ()=>{
+describe('Auth endpoint', ()=>{
 
     let db;
 
@@ -27,14 +28,15 @@ describe('New service endpoint', ()=>{
     })
     
 
-    describe('POST /user/service', ()=>{
-        const user = {
+    describe('POST /api/login', ()=>{
+        
+        let user = {
             first_name: "name",
             last_name: "lastname", 
             email: "email@yahoo.com", 
-            password: "Carcamo11!",
+            password: '',
             home_number: "111111111",  
-            mobile_number: "6317040168", 
+            mobile_number: 6317040168, 
             address: "address", 
             city: "city", 
             state_region: "state", 
@@ -42,22 +44,25 @@ describe('New service endpoint', ()=>{
             id: "kj12iui12uuid"
         }
 
+        bcrypt.hash("Carcamo11!", 12).then( hashedPassword => 
+            {
+                user.password = hashedPassword
+            });
+        
         beforeEach('insert user', ()=>{
-            return helpers.cleanTables(db).then(seedUser=> helpers.seedUsers(db, user))
+            return helpers.cleanTables(db).then(seed=> helpers.seedUsers(db, user));
         })
 
-        it('should respond 201', ()=>{
-            
-            const newService ={
-                service_type: 'Windows', comments: 'Hello', day: 'Monday', best_time_reached: '8:00AM', 
-                price: '$90:00', user_id: 'kj12iui12uuid', date_modified: new Date()
-            };
+        it('should respond 200', ()=>{
 
+            const loginUser = {
+                mobile_number: 6317040168,
+                password: "Carcamo11!"
+            }
             return supertest(app)
-                .post('/user/service')
-                .set('Authorization', helpers.makeAuthHeader(user))
-                .send(newService)
-                .expect(201);
+                .post('/api/login')
+                .send(loginUser)
+                .expect(200);
         })
-    } )
+    })
 })

@@ -19,7 +19,7 @@ userRouter
 
         UserService.getUserInfo(req.app.get('db'), userId).then( resData => {
             if(resData){
-                res.json({
+                res.status(200).json({
                     first_name: resData.first_name, 
                     last_name: resData.last_name,
                     email: resData.email, 

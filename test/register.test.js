@@ -1,5 +1,5 @@
-const knex = require('knex')
-const jwt  = require('jsonwebtoken'); 
+require('dotenv').config()
+const knex = require('knex');
 const app = require('../src/app/app');
 const helpers = require('./test-helpers');
 
@@ -19,11 +19,11 @@ describe('Register endpoint', ()=>{
     })
 
     before('cleanup', ()=>{
-        helpers.cleanTables(db)
+        return helpers.cleanTables(db)
     })
 
     afterEach('cleanup',()=>{
-        helpers.cleanTables(db);
+        return helpers.cleanTables(db);
     })
     
     describe('POST /api/register', ()=>{

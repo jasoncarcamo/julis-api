@@ -14,6 +14,7 @@ authRouter
 
         for( const [key, value] of Object.entries(user)){
             if(value == null){
+                console.log('first')
                 return res.status(400).json({ error: `Missing '${key}' in request body`})
             }
         }
@@ -22,6 +23,7 @@ authRouter
             .then(dbUser => {
                 
                 if(!dbUser){
+                    console.log('second')
                     return res.status(400).json({ error: 'No account found, why not signing up above?'});
                 };
 
@@ -29,13 +31,14 @@ authRouter
                     .then(compareMatch => {
 
                         if(!compareMatch){
+                            console.log('third')
                             return res.status(400).json({ error: 'Incorrect password'});
                         };
 
                         const sub = dbUser.mobile_number;
                         const payload = { user: dbUser.id};
                         
-                        res.send({
+                        return res.status(200).send({
                             authToken: AuthService.createJwt(sub, payload),
                             id: dbUser.id,
                             verified: dbUser.verified,

@@ -218,7 +218,7 @@ function cleanTables(db) {
 
 function seedUsers(db, user) {
  
-  db.insert(user).into('users').returning('*').then(([user])=> user);
+  return db.insert(user).into('users').returning('*').then(([user])=> user);
 }
 
 function seedArticlesTables(db, users, service, ) {
