@@ -27,11 +27,14 @@ The starting template used to create a full stack website for a cleaning company
 - DELETE /api/delete/:id   Deletes a specific user by id
 
 ## /api/login - Logs in a user and returns a authorization token
-
 - POST /api/login  Create and returns a new authorizaion token for user successful log in
 
+### For demo purposes you can use this account:
+  Mobile number: 11<br/>
+  Password: Password11! (case-sensitive)<br/>
+
 ## /user/service - Service endpoints
-You will need a authorization token for the next few endpoints. You should have recieved a authorization token when you loggined in and automatically saved in your local storage.
+You will need a authorization token for the next few endpoints. You should have recieved a authorization token when you loggined in and automatically saved in your local storage or you can use the above account for demo purposes.
 
 - GET /user/service   Returns specific user service
 - POST /user/service   Create a new service request
