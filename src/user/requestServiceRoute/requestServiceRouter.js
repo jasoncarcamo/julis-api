@@ -8,13 +8,13 @@ requestServiceRouter
     .all(express.json())
     .all(express.urlencoded({ extended: true}))
     .get(express.json(), (req, res, next)=>{
-        
-        RequestService.getServiceByUserId(req.app.get('db'), req.user.id)
+        const {id} = req.query;
+        RequestService.getServiceByServiceId(req.app.get('db'), id)
             .then( response => {
                 if(!response){
-                    return res.status(400).json({ error: 'No account found'})
+                    return res.status(400).json({ error: 'No service found'})
                 }
-                res.json({services: response}
+                res.json({service: response, id}
             )});
         
         
