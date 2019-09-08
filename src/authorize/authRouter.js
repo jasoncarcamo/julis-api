@@ -14,7 +14,6 @@ authRouter
 
         for( const [key, value] of Object.entries(user)){
             if(value == null){
-                console.log('first')
                 return res.status(400).json({ error: `Missing '${key}' in request body`})
             }
         }
@@ -23,7 +22,6 @@ authRouter
             .then(dbUser => {
                 
                 if(!dbUser){
-                    console.log('second')
                     return res.status(400).json({ error: 'No account found, why not signing up above?'});
                 };
 
@@ -31,7 +29,6 @@ authRouter
                     .then(compareMatch => {
 
                         if(!compareMatch){
-                            console.log('third')
                             return res.status(400).json({ error: 'Incorrect password'});
                         };
 

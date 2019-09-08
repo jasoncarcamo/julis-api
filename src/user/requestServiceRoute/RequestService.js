@@ -11,8 +11,7 @@ const requestService = {
     updateService(db, newService){
         return db.update(newService).from('services').where({id: newService.id})
     },
-    deleteService(db , id){
-        
+    deleteService(db , id){        
         return db.delete().from('services').where({id});
     }
 }
