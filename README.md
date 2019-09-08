@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br>
 
-# API url: `https://fathomless-eyrie-65525.herokuapp.com/`
+# API url: `https://fathomless-eyrie-65525.herokuapp.com`
 
 ## Summary
 The starting template used to create a full stack website for a cleaning company. Features include endpoints for creating user accounts and complete control of creating, editing, and deleting services.
