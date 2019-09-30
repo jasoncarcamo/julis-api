@@ -17,6 +17,9 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br/>
 
 ## API url: `https://fathomless-eyrie-65525.herokuapp.com`
+For demo purposes you can use this account:
+- Mobile number: 11
+- Password: Password11! (case-sensitive)
 
 ## Summary
 The starting template used to create a full stack website for a cleaning company. Features include endpoints for creating user accounts and complete control of creating, editing, and deleting services.
@@ -28,10 +31,6 @@ The starting template used to create a full stack website for a cleaning company
 
 ## /api/login - Logs in a user and returns a authorization token
 - POST /api/login  Create and returns a new authorizaion token for user successful log in
-
-### For demo purposes you can use this account:
-  Mobile number: 11<br/>
-  Password: Password11! (case-sensitive)<br/>
 
 ## /user/service - Service endpoints
 You will need a authorization token for the next few endpoints. You should have recieved a authorization token when you loggined in and automatically saved in your local storage or you can use the above account for demo purposes.
