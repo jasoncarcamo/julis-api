@@ -1,22 +1,22 @@
 # julis clieaning service API
 
-### `npm install`
+## `npm install`
 
 Install the project's dependencies
 
-### `npm run dev`
+## `npm run dev`
 
 Runs the app in the development mode.<br>
-Open [http://localhost:(choice of PORT)](http://localhost:(choice of PORT)) to view it in the browser in development mode.
+Open [http://localhost:<choice of PORT>] to use on postman in development mode.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+## `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
+Launches the test runner in the interactive watch mode.<br/>
 
-# API url: `https://fathomless-eyrie-65525.herokuapp.com`
+## API url: `https://fathomless-eyrie-65525.herokuapp.com`
 
 ## Summary
 The starting template used to create a full stack website for a cleaning company. Features include endpoints for creating user accounts and complete control of creating, editing, and deleting services.
@@ -43,9 +43,9 @@ You will need a authorization token for the next few endpoints. You should have 
 
 ## Built with
 - PostgreSQL
-- Knex
-- Helmet
-- nodemon
-- Cors
+- Knex.js
+- Helmet.js
+- Nodemon.js
+- Cors.js
 - RESTful principles
 - TDD with mocha, Jest, and Enzyme
