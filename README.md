@@ -1,4 +1,4 @@
-# julis clieaning service API
+# julis cleaning service API
 
 ## `npm install`
 
