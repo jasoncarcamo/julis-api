@@ -25,7 +25,6 @@ For demo purposes you can use this account:
 The starting template used to create a full stack website for a cleaning company. Features include endpoints for creating user accounts and complete control of creating, editing, and deleting services.
 
 ## /api/register - Registers an account
-
 - POST /api/register   Create a new user
 - DELETE /api/delete/:id   Deletes a specific user by id
 
